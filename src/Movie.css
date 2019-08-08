@@ -1,0 +1,9 @@
+.Movie {
+  display: flex;
+  flex-direction: column;
+  width: 25rem;
+}
+
+.Movie img {
+  align-self: center;
+}
