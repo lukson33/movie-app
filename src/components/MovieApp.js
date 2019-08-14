@@ -87,7 +87,7 @@ export class MovieApp extends Component {
   render() {
     return (
       <div className="MovieApp">
-        <h1>Movie App</h1>
+        <h1>Movie App!</h1>
         <form onSubmit={this.handleSubmit}>
           <input
             name="movieInput"
