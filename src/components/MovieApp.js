@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Movie from "./Movie";
+import MovieDetails from "./MovieDetails";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "../MovieApp.css";
 import { throwStatement } from "@babel/types";
@@ -100,7 +102,11 @@ export class MovieApp extends Component {
         {this.state.isShown && <p>Please enter a movie</p>}
         <div className="Movie-container">
           {this.state.movies.map(arr =>
-            arr.map(m => <Movie movie={m} key={m.id} />)
+            arr.map(m => (
+              <Link to={`/movies/${m.title}/${m.id}`}>
+                <Movie movie={m} key={m.id} />
+              </Link>
+            ))
           )}
         </div>
       </div>
