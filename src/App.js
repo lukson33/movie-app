@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import MovieDetails from "./components/MovieDetails";
 import MovieApp from "./components/MovieApp";
 import Movies from "./components/Movies";
+import MovieList from "./components/MovieList";
 import "./App.css";
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
       <div className="App">
         <Switch>
           <Route exact path="/" component={MovieApp} />
-          <Route exact path="/movies" component={Movies} />
+          <Route exact path="/movie/:name" component={MovieList} />
           <Route exact path="/movies/:name/:id" component={MovieDetails} />
         </Switch>
       </div>
