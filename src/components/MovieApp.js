@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import Movie from "./Movie";
 import MovieDetails from "./MovieDetails";
+import MovieList from "./MovieList";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import "../MovieApp.css";
 import { throwStatement } from "@babel/types";
 
 export class MovieApp extends Component {
@@ -35,6 +35,7 @@ export class MovieApp extends Component {
       this.setState({
         movies: []
       });
+      console.log(this.state.movies);
       try {
         const response = await axios.get(url);
         this.setState({ pages: 2 });
@@ -96,19 +97,17 @@ export class MovieApp extends Component {
             onChange={this.handleChange}
             onClick={this.handleDelete}
           />
-          <button type="submit">Submit</button>
+          <Link
+            to={{
+              pathname: `/movie/${this.state.movieInput}`,
+              state: { name: this.state.movieInput }
+            }}
+          >
+            <button type="submit">Submit</button>
+          </Link>
           <button onClick={this.handleMore}>Load More</button>
         </form>
         {this.state.isShown && <p>Please enter a movie</p>}
-        <div className="Movie-container">
-          {this.state.movies.map(arr =>
-            arr.map(m => (
-              <Link to={`/movies/${m.title}/${m.id}`}>
-                <Movie movie={m} key={m.id} />
-              </Link>
-            ))
-          )}
-        </div>
       </div>
     );
   }
