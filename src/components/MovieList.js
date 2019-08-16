@@ -24,7 +24,11 @@ export default function MovieList(props) {
   console.log(movies);
   return (
     <div className="MovieList Movie-container">
-      {movies ? movies.map(m => <Movie movie={m} />) : <p>nothing there</p>}
+      {movies ? (
+        movies.map(m => <Movie movie={m} />)
+      ) : (
+        <p class="loading">Loading movies...</p>
+      )}
     </div>
   );
 }
