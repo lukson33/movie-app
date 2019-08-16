@@ -39,7 +39,7 @@ export default class Movie extends Component {
       <div className="Movie">
         <h2>{this.props.movie.title}</h2>
         <Link
-          onUpdate={() => window.scrollTo(0, 0)}
+          // onUpdate={() => window.scrollTo(0, 0)}
           to={{
             pathname: `/movies/${this.props.movie.title}/${
               this.props.movie.id
