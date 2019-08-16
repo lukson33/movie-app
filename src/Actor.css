@@ -1,0 +1,20 @@
+.Actor {
+  padding: 1rem;
+}
+
+.Movie-details {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.actors-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.actor-img {
+  width: 170px;
+  height: 250px;
+}
