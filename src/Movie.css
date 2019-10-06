@@ -1,7 +1,74 @@
 .Movie {
   display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  width: 50rem;
+  border: 1px solid rgb(190, 190, 190);
+  margin: 0 2rem 2rem 0;
+  -webkit-box-shadow: 3px 2px 2px 0px rgba(0, 0, 0, 0.38);
+  -moz-box-shadow: 3px 2px 2px 0px rgba(0, 0, 0, 0.38);
+  box-shadow: 3px 2px 2px 0px rgba(0, 0, 0, 0.38);
+}
+
+.Movie-content {
+  text-align: left;
+  padding: 0.7rem 1.5rem;
+  display: flex;
   flex-direction: column;
-  width: 25rem;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.movie-desc {
+  margin-top: 1rem !important;
+}
+
+.vote-flex {
+  display: flex;
+  margin-left: 0.5rem;
+}
+
+.vote-flex-num {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vote-flex-text {
+  margin-left: 1.5rem;
+}
+
+.vote-p {
+  font-size: 1.1rem;
+  position: relative;
+  font-weight: bold;
+}
+
+.vote-p::after {
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  content: "";
+  display: block;
+  background-color: rgb(15, 15, 15);
+  color: rgb(255, 68, 68);
+  width: 2.7rem;
+  height: 2.7rem;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.Movie-content a {
+  display: inline-block;
+}
+
+.Movie-content h2 {
+  margin: 0;
+}
+
+.Movie-content p {
+  margin: 0;
 }
 
 .Movie img {

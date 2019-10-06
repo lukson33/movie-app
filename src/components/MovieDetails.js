@@ -1,6 +1,7 @@
 import React, { Component, useState, useEffect } from "react";
 import Actor from "./Actor";
 import "../Actor.css";
+import "../MovieDetails.css";
 
 export default class MovieDetails extends Component {
   constructor(props) {
@@ -36,10 +37,11 @@ export default class MovieDetails extends Component {
     let actors = this.props.location.state.actors[0].cast;
     let half = Math.floor(actors.length / 2);
 
-    let actorsFirst = actors.slice(0, half);
-    let actorsSecond = actors.slice(half, actors.length);
-    // const actors = this.props.location.state.actors[0].cast;
-    // const newActors = actors.slice(0, 9);
+    let actorsFirst = actors.slice(0, 5);
+    let actorsSecond = actors.slice(5, actors.length);
+
+    console.log(this.props);
+
     return (
       <div className="Movie-details">
         <h3>{original_title}</h3>
@@ -55,7 +57,7 @@ export default class MovieDetails extends Component {
               <Actor actor={actor} id={actor.cast_id} />
             ))}
 
-          <button onClick={this.toggle}>Load more actors</button>
+          <button onClick={this.toggle}>Full Cast &amp; Crew</button>
           {this.state.isTrue
             ? actorsSecond
                 .filter(actor => actor.profile_path)
