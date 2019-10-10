@@ -12,6 +12,7 @@ export default class Movie extends Component {
 
     this.truncate = this.truncate.bind(this);
     this.getColor = this.getColor.bind(this);
+    this.getNumber = this.getNumber.bind(this);
   }
 
   truncate = (str, no_words) => {
@@ -23,12 +24,12 @@ export default class Movie extends Component {
 
   getColor = () => {
     if (this.props.movie.vote_average >= 7.5) {
-      return "rgb(57, 235, 57)";
+      return "rgb(1, 197, 1)";
     } else if (
       this.props.movie.vote_average >= 4 &&
       this.props.movie.vote_average <= 7.5
     ) {
-      return "rgb(229, 255, 82)";
+      return "rgb(207, 233, 64)";
     } else if (
       this.props.movie.vote_average < 4 &&
       this.props.movie.vote_average > 0.1
@@ -36,6 +37,16 @@ export default class Movie extends Component {
       return "rgb(255, 68, 68)";
     } else if (this.props.movie.vote_average === 0) {
       return "rgb(255, 255, 255)";
+    }
+  };
+
+  getNumber = () => {
+    if (this.props.movie.vote_average === 0) {
+      return "NR";
+    } else if (this.props.movie.vote_average % 1 === 0) {
+      return `${this.props.movie.vote_average}.0`;
+    } else {
+      return this.props.movie.vote_average;
     }
   };
 
@@ -58,10 +69,14 @@ export default class Movie extends Component {
           <div>
             <div className="vote-flex">
               <div className="vote-flex-num">
-                <p style={{ color: this.getColor() }} className="vote-p">
-                  {this.props.movie.vote_average === 0
-                    ? "NR"
-                    : this.props.movie.vote_average}
+                <p
+                  style={{
+                    color: this.getColor(),
+                    border: `4px solid ${this.getColor()}`
+                  }}
+                  className="vote-p"
+                >
+                  {this.getNumber()}
                 </p>
               </div>
               <div className="vote-flex-text">
