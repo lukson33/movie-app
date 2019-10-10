@@ -12,6 +12,9 @@ export default class MovieDetails extends Component {
     };
 
     this.toggle = this.toggle.bind(this);
+    this.getColor = this.getColor.bind(this);
+    this.getNumber = this.getNumber.bind(this);
+    this.getGradient = this.getGradient.bind(this);
   }
   //Fix scroll error
   componentDidMount() {
@@ -22,6 +25,49 @@ export default class MovieDetails extends Component {
     this.setState({ isTrue: !this.state.isTrue });
     console.log(this.state.isTrue);
   };
+
+  getGradient = () => {
+    const gradients = [
+      "linear-gradient(to right, #2C5364, #203A43, #0F2027)",
+      "linear-gradient(to right, #000046, #1cb5e0)",
+      "linear-gradient(to right, #141e30, #243b55)",
+      "linear-gradient(to right, #0f0c29, #302b63, #24243e)"
+    ];
+    const rnd = Math.floor(Math.random() * 4);
+    return gradients[rnd];
+  };
+
+  getColor = () => {
+    if (this.props.location.state.movieInfo.movie.vote_average >= 7.5) {
+      return "rgb(1, 197, 1)";
+    } else if (
+      this.props.location.state.movieInfo.movie.vote_average >= 4 &&
+      this.props.location.state.movieInfo.movie.vote_average <= 7.5
+    ) {
+      return "rgb(207, 233, 64)";
+    } else if (
+      this.props.location.state.movieInfo.movie.vote_average < 4 &&
+      this.props.location.state.movieInfo.movie.vote_average > 0.1
+    ) {
+      return "rgb(255, 68, 68)";
+    } else if (this.props.location.state.movieInfo.movie.vote_average === 0) {
+      return "rgb(255, 255, 255)";
+    }
+  };
+
+  getNumber = () => {
+    if (this.props.location.state.movieInfo.movie.vote_average === 0) {
+      return "NR";
+    } else if (
+      this.props.location.state.movieInfo.movie.vote_average % 1 ===
+      0
+    ) {
+      return `${this.props.location.state.movieInfo.movie.vote_average}.0`;
+    } else {
+      return this.props.location.state.movieInfo.movie.vote_average;
+    }
+  };
+
   render() {
     const {
       id,
@@ -42,14 +88,42 @@ export default class MovieDetails extends Component {
 
     console.log(this.props);
 
+    const release_year = release_date.split("-")[0];
+    const releaseDate = release_year;
+
     return (
       <div className="Movie-details">
-        <h3>{original_title}</h3>
-        <p>{overview}</p>
-        <p>{release_date}</p>
-        <img src={`http://image.tmdb.org/t/p/w185//${poster_path}`} alt="" />
-        <p>{vote_average}</p>
+        <div
+          className="Movie-background"
+          style={{ background: this.getGradient() }}
+        >
+          <div className="Movie-wrapper">
+            <div className="Movie-text">
+              <h3>
+                {original_title} ({releaseDate})
+              </h3>
+              <p
+                style={{
+                  color: this.getColor(),
+                  border: `4px solid ${this.getColor()}`
+                }}
+                className="vote-p"
+              >
+                {this.getNumber()}
+              </p>
+              <p className="overview">Overview</p>
+              <p>{overview}</p>
+            </div>
+            <img
+              src={`http://image.tmdb.org/t/p/w185//${poster_path}`}
+              alt=""
+            />
+          </div>
+        </div>
 
+        <div className="Actors">
+          <h2>Top Billed Cast</h2>
+        </div>
         <div className="actors-container">
           {actorsFirst
             .filter(actor => actor.profile_path)
@@ -57,13 +131,13 @@ export default class MovieDetails extends Component {
               <Actor actor={actor} id={actor.cast_id} />
             ))}
 
-          <button onClick={this.toggle}>Full Cast &amp; Crew</button>
           {this.state.isTrue
             ? actorsSecond
                 .filter(actor => actor.profile_path)
                 .map(actor => <Actor actor={actor} id={actor.cast_id} />)
             : null}
         </div>
+        <button onClick={this.toggle}>Full Cast &amp; Crew</button>
       </div>
     );
   }
