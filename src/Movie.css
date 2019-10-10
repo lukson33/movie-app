@@ -8,6 +8,7 @@
   -webkit-box-shadow: 3px 2px 2px 0px rgba(0, 0, 0, 0.38);
   -moz-box-shadow: 3px 2px 2px 0px rgba(0, 0, 0, 0.38);
   box-shadow: 3px 2px 2px 0px rgba(0, 0, 0, 0.38);
+  border: 1px solid black;
 }
 
 .Movie-content {
@@ -17,6 +18,7 @@
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
+  background-color: rgb(189, 189, 189);
 }
 
 .movie-desc {
@@ -25,7 +27,6 @@
 
 .vote-flex {
   display: flex;
-  margin-left: 0.5rem;
 }
 
 .vote-flex-num {
@@ -35,28 +36,17 @@
 }
 
 .vote-flex-text {
-  margin-left: 1.5rem;
+  margin-left: 1rem;
 }
 
 .vote-p {
+  display: inline-block;
   font-size: 1.1rem;
   position: relative;
   font-weight: bold;
-}
-
-.vote-p::after {
-  top: 50%;
-  left: 50%;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  content: "";
-  display: block;
-  background-color: rgb(15, 15, 15);
-  color: rgb(255, 68, 68);
-  width: 2.7rem;
-  height: 2.7rem;
   border-radius: 50%;
-  z-index: -1;
+  background-color: rgb(17, 0, 39);
+  padding: 0.7rem;
 }
 
 .Movie-content a {
