@@ -1,3 +1,42 @@
 .actors-container {
   display: flex;
 }
+
+.Movie-background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35rem;
+}
+
+.overview {
+  font-weight: bold;
+}
+
+.Movie-text {
+  margin-left: 5rem;
+  text-align: left;
+  color: #fff;
+}
+
+.Movie-text h3 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+.Movie-text p {
+  font-size: 1.1rem;
+}
+
+.Movie-wrapper {
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+}
+
+.Movie-wrapper img {
+  min-width: 18rem;
+}
