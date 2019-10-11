@@ -1,0 +1,25 @@
+.Cast {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.Cast-text {
+  text-align: left;
+  display: flex;
+  margin-left: 1rem;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.Cast-name {
+  font-weight: bold;
+  margin: 0 0 0.8rem 0;
+}
+
+.Cast-img {
+  width: 100px;
+}
+
+.Cast-img img {
+  width: 100%;
+}

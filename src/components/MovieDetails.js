@@ -1,4 +1,5 @@
 import React, { Component, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Actor from "./Actor";
 import "../Actor.css";
 import "../MovieDetails.css";
@@ -29,11 +30,10 @@ export default class MovieDetails extends Component {
   getGradient = () => {
     const gradients = [
       "linear-gradient(to right, #2C5364, #203A43, #0F2027)",
-      "linear-gradient(to right, #000046, #1cb5e0)",
       "linear-gradient(to right, #141e30, #243b55)",
       "linear-gradient(to right, #0f0c29, #302b63, #24243e)"
     ];
-    const rnd = Math.floor(Math.random() * 4);
+    const rnd = Math.floor(Math.random() * 3);
     return gradients[rnd];
   };
 
@@ -123,21 +123,30 @@ export default class MovieDetails extends Component {
 
         <div className="Actors">
           <h2>Top Billed Cast</h2>
-        </div>
-        <div className="actors-container">
-          {actorsFirst
-            .filter(actor => actor.profile_path)
-            .map(actor => (
-              <Actor actor={actor} id={actor.cast_id} />
-            ))}
 
-          {this.state.isTrue
-            ? actorsSecond
-                .filter(actor => actor.profile_path)
-                .map(actor => <Actor actor={actor} id={actor.cast_id} />)
-            : null}
+          <div className="actors-container">
+            {actorsFirst
+              .filter(actor => actor.profile_path)
+              .map(actor => (
+                <Actor actor={actor} id={actor.cast_id} />
+              ))}
+
+            {this.state.isTrue
+              ? actorsSecond
+                  .filter(actor => actor.profile_path)
+                  .map(actor => <Actor actor={actor} id={actor.cast_id} />)
+              : null}
+          </div>
+          <Link
+            // onUpdate={() => window.scrollTo(0, 0)}
+            to={{
+              pathname: `/movies/${original_title}/${id}/full-cast`,
+              state: { actors: this.props.location.state.actors[0] }
+            }}
+          >
+            <button>Full Cast &amp; Crew</button>
+          </Link>
         </div>
-        <button onClick={this.toggle}>Full Cast &amp; Crew</button>
       </div>
     );
   }

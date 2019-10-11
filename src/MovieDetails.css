@@ -1,5 +1,30 @@
+.Actors {
+  padding: 2.5rem 0;
+}
+
 .actors-container {
   display: flex;
+}
+
+.Actors h2 {
+  color: rgb(209, 209, 209);
+  margin-bottom: 4rem;
+}
+
+.Actors button {
+  font-weight: bold;
+  background-color: rgb(27, 27, 94);
+  padding: 0.7rem;
+  cursor: pointer;
+  border: none;
+  margin-top: 3.5rem;
+  color: rgb(209, 209, 209);
+  font-size: 1.2rem;
+  transition: 0.3s all;
+}
+
+.Actors button:hover {
+  transform: translateY(-3px);
 }
 
 .Movie-background {

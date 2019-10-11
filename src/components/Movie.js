@@ -64,53 +64,61 @@ export default class Movie extends Component {
 
   render() {
     return (
-      <div className="Movie">
-        <div className="Movie-content">
-          <div>
-            <div className="vote-flex">
-              <div className="vote-flex-num">
-                <p
-                  style={{
-                    color: this.getColor(),
-                    border: `4px solid ${this.getColor()}`
-                  }}
-                  className="vote-p"
-                >
-                  {this.getNumber()}
-                </p>
+      <Link
+        // onUpdate={() => window.scrollTo(0, 0)}
+        to={{
+          pathname: `/movies/${this.props.movie.title}/${this.props.movie.id}`,
+          state: { movieInfo: this.props, actors: this.state.actors }
+        }}
+      >
+        <div className="Movie">
+          <div className="Movie-content">
+            <div>
+              <div className="vote-flex">
+                <div className="vote-flex-num">
+                  <p
+                    style={{
+                      color: this.getColor(),
+                      border: `4px solid ${this.getColor()}`
+                    }}
+                    className="vote-p"
+                  >
+                    {this.getNumber()}
+                  </p>
+                </div>
+                <div className="vote-flex-text">
+                  <h2>{this.props.movie.title}</h2>
+                  <p>{this.props.movie.release_date}</p>
+                </div>
               </div>
-              <div className="vote-flex-text">
-                <h2>{this.props.movie.title}</h2>
-                <p>{this.props.movie.release_date}</p>
-              </div>
+
+              <p className="movie-desc">
+                {this.truncate(this.props.movie.overview, 20)}...
+              </p>
             </div>
+            <div>
+              <Link
+                // onUpdate={() => window.scrollTo(0, 0)}
+                to={{
+                  pathname: `/movies/${this.props.movie.title}/${this.props.movie.id}`,
+                  state: { movieInfo: this.props, actors: this.state.actors }
+                }}
+              >
+                <a href="">More info</a>
+              </Link>
+            </div>
+          </div>
 
-            <p className="movie-desc">
-              {this.truncate(this.props.movie.overview, 20)}...
-            </p>
-          </div>
-          <div>
-            <Link
-              // onUpdate={() => window.scrollTo(0, 0)}
-              to={{
-                pathname: `/movies/${this.props.movie.title}/${this.props.movie.id}`,
-                state: { movieInfo: this.props, actors: this.state.actors }
-              }}
-            >
-              <a href="">More info</a>
-            </Link>
-          </div>
+          {this.props.movie.poster_path ? (
+            <img
+              src={`http://image.tmdb.org/t/p/w185//${this.props.movie.poster_path}`}
+              alt=""
+            />
+          ) : (
+            <p>Image not found</p>
+          )}
         </div>
-
-        {this.props.movie.poster_path ? (
-          <img
-            src={`http://image.tmdb.org/t/p/w185//${this.props.movie.poster_path}`}
-            alt=""
-          />
-        ) : (
-          <p>Image not found</p>
-        )}
-      </div>
+      </Link>
     );
   }
 }
