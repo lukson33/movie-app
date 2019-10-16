@@ -5,7 +5,9 @@ import MovieApp from "./components/MovieApp";
 import Movies from "./components/Movies";
 import MovieList from "./components/MovieList";
 import FullCast from "./components/FullCast";
+import TopRated from "./components/TopRated";
 import "./App.css";
+import Upcoming from "./components/Upcoming";
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
       <div className="App">
         <Switch>
           <Route exact path="/" component={MovieApp} />
+          <Route exact path="/top-rated" component={TopRated} />
+          <Route exact path="/upcoming" component={Upcoming} />
           <Route exact path="/movie/:name" component={MovieList} />
           <Route exact path="/movies/:name/:id" component={MovieDetails} />
           <Route

@@ -11,11 +11,11 @@ export class MovieApp extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { movieInput: "", movies: [], pages: 1, isShown: true };
+    this.state = { movieInput: "", movies: [], pageNum: 1, isShown: true };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.handleMore = this.handleMore.bind(this);
+    this.loadMore = this.loadMore.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
   }
 
@@ -28,6 +28,25 @@ export class MovieApp extends Component {
     const newMovies = movies.results;
     console.log(newMovies);
     this.setState({ movies: newMovies });
+  }
+
+  async loadMore() {
+    this.setState(prevState => ({
+      pageNum: prevState.pageNum + 1
+    }));
+    console.log(this.state.pageNum);
+    const API_KEY = "aa7add1a816db1a576175e4abfc544cf";
+    const res = await fetch(
+      `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=${this
+        .state.pageNum + 1}`
+    );
+    const movies = await res.json();
+    const newMovies = movies.results;
+    console.log(newMovies);
+    this.setState({ newMovies: [...newMovies] });
+    this.setState(prevState => ({
+      movies: [...prevState.movies, ...newMovies]
+    }));
   }
 
   handleChange = e => {
@@ -63,41 +82,12 @@ export class MovieApp extends Component {
     }
   }
 
-  // async handleMore(e) {
-  //   if (this.state.movieInput === "") {
-  //     e.preventDefault();
-  //   } else {
-  //     e.preventDefault();
-  //     const value = this.state.movieInput;
-  //     const API_KEY = "aa7add1a816db1a576175e4abfc544cf";
-  //     const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${value}&page=${
-  //       this.state.pages
-  //     }&include_adult=false`;
-  //     try {
-  //       const response = await axios.get(url);
-  //       console.log(response);
-  //       if (this.state.pages === response.data.total_pages + 1) {
-  //         console.log("No more results to be shown");
-  //       } else {
-  //         const newMovies = response.data.results;
-  //         this.setState(prevState => ({
-  //           movies: [...prevState.movies, newMovies],
-  //           pages: this.state.pages + 1
-  //         }));
-  //         console.log(newMovies);
-  //       }
-  //       console.log(this.state.movies);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   }
-  // }
-
   handleDelete = e => {
     this.setState({ movieInput: "" });
   };
 
   render() {
+    console.log(this.props);
     return (
       <div className="MovieApp">
         <h1>Movie App!</h1>
@@ -122,10 +112,30 @@ export class MovieApp extends Component {
         {this.state.isShown && <p>Please enter a movie</p>}
         {/* Display popular movies */}
         <h2 className="h2-popular">Popular movies</h2>
+
+        <button>Popular Movies</button>
+        <Link
+          to={{
+            pathname: `/upcoming`,
+            state: { name: this.state.movieInput }
+          }}
+        >
+          <button>Upcoming Movies</button>
+        </Link>
+        <Link
+          to={{
+            pathname: `/top-rated`,
+            state: { name: this.state.movieInput }
+          }}
+        >
+          <button>Top Rated Movies</button>
+        </Link>
+
         <div className="Movie-container">
           {this.state.movies.map(movie => (
             <Movie movie={movie} key={movie.id} />
           ))}
+          <button onClick={this.loadMore}>Load More Movies</button>
         </div>
       </div>
     );

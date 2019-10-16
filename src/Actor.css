@@ -5,13 +5,17 @@
   flex: 0 0 180px;
   height: 380px;
   background-color: rgb(42, 42, 128);
-  -webkit-box-shadow: 3px 2px 2px 0px rgba(0, 0, 0, 0.38);
+  -webkit-box-shadow: 3px 2px 2px 0px rgba(41, 37, 37, 0.38);
   -moz-box-shadow: 3px 2px 2px 0px rgba(0, 0, 0, 0.38);
   box-shadow: 5px 4px 4px 0px rgba(0, 0, 0, 0.38);
 }
 
 .Actor:last-child {
   margin: 0;
+}
+
+.Actor-img {
+  height: 280px;
 }
 
 .Actor-text {
