@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Movie from "./Movie";
+import Search from "./Search";
 
 export class TopRated extends Component {
   constructor(props) {
@@ -52,6 +53,7 @@ export class TopRated extends Component {
   render() {
     return (
       <div className="TopRated">
+        <Search />
         <button onClick={this.goBack}>GO BACK</button>
         <div className="MovieList Movie-container">
           {this.state.movies ? (

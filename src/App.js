@@ -8,6 +8,7 @@ import FullCast from "./components/FullCast";
 import TopRated from "./components/TopRated";
 import "./App.css";
 import Upcoming from "./components/Upcoming";
+import Search from "./components/Search";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
           <Route exact path="/" component={MovieApp} />
           <Route exact path="/top-rated" component={TopRated} />
           <Route exact path="/upcoming" component={Upcoming} />
-          <Route exact path="/movie/:name" component={MovieList} />
+          <Route exact path="/movie/:name" component={Search} />
           <Route exact path="/movies/:name/:id" component={MovieDetails} />
           <Route
             exact
