@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import MovieList from "./MovieList";
 import axios from "axios";
 
 export class Search extends Component {
@@ -8,12 +7,11 @@ export class Search extends Component {
     super(props);
 
     this.state = {
-      movies: [],
       movieInput: ""
     };
 
-    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange = e => {
@@ -34,25 +32,24 @@ export class Search extends Component {
         movies: []
       });
       console.log(this.state.movies);
-      console.log(this.state.movieInput);
-      console.log(this.props.history);
       try {
         const response = await axios.get(url);
         this.setState({ pages: 2 });
+        console.log(response.data.results);
         const newMovies = response.data.results;
         this.setState(prevState => ({
           movies: [...prevState.movies, newMovies]
         }));
+        console.log(this.state.movies);
       } catch (err) {
         console.log(err);
       }
     }
-    console.log(this.state.movies);
   }
+
   render() {
     return (
       <div>
-        <h1>Movie App!</h1>
         <form onSubmit={this.handleSubmit}>
           <input
             name="movieInput"
@@ -67,17 +64,11 @@ export class Search extends Component {
               state: { name: this.state.movieInput }
             }}
           >
-            <button onClick={this.handleSubmit} type="submit">
-              Search movies
-            </button>
+            <button type="submit">Search movies</button>
           </Link>
+          {/* <button onClick={this.handleMore}>Load More</button> */}
         </form>
         {this.state.isShown && <p>Please enter a movie</p>}
-
-        <MovieList
-          movieName={this.props.location.state.name}
-          movies={this.state.movies}
-        />
       </div>
     );
   }

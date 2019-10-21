@@ -56,6 +56,7 @@ export class MovieApp extends Component {
     console.log(this.props);
     return (
       <div className="MovieApp">
+        <h1>Movie App!</h1>
         <Search />
         {/* Display popular movies */}
         <h2 className="h2-popular">Popular movies</h2>
