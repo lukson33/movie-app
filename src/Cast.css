@@ -17,9 +17,12 @@
 }
 
 .Cast-img {
-  width: 100px;
+  width: 90px;
+  height: 90px;
+  margin-bottom: 3rem;
 }
 
 .Cast-img img {
   width: 100%;
+  border-radius: 5px;
 }

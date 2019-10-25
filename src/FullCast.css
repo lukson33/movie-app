@@ -1,0 +1,41 @@
+.FullCast {
+  background-color: #fff;
+}
+
+.FullCast-container {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.movie-banner {
+  background-color: rgb(75, 0, 0);
+  padding: 2rem 0;
+  color: #fff;
+  display: flex;
+  align-items: flex-start;
+}
+
+.banner-container {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.movie-banner h1 {
+  margin-left: 2rem;
+}
+
+.movie-banner img {
+  width: 90px;
+  height: auto;
+  border-radius: 5px;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}

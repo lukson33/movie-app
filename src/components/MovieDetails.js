@@ -141,7 +141,12 @@ export default class MovieDetails extends Component {
             // onUpdate={() => window.scrollTo(0, 0)}
             to={{
               pathname: `/movies/${original_title}/${id}/full-cast`,
-              state: { actors: this.props.location.state.actors[0] }
+              state: {
+                actors: this.props.location.state.actors[0],
+                title: original_title,
+                year: releaseDate,
+                image: poster_path
+              }
             }}
           >
             <button>Full Cast &amp; Crew</button>

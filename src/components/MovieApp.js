@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Movie from "./Movie";
 import MovieDetails from "./MovieDetails";
 import MovieList from "./MovieList";
+import Header from "./Header";
 import Search from "./Search";
 import "../MovieApp.css";
 import { Link } from "react-router-dom";
@@ -12,7 +13,7 @@ export class MovieApp extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { movies: [], pageNum: 1, isShown: true };
+    this.state = { movies: [], pageNum: 1, isShown: true, render: false };
 
     this.loadMore = this.loadMore.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
@@ -27,6 +28,14 @@ export class MovieApp extends Component {
     const newMovies = movies.results;
     console.log(newMovies);
     this.setState({ movies: newMovies });
+
+    setTimeout(
+      function() {
+        //Start the timer
+        this.setState({ render: true }); //After 1 second, set render to true
+      }.bind(this),
+      500
+    );
   }
 
   async loadMore() {
@@ -55,35 +64,20 @@ export class MovieApp extends Component {
   render() {
     console.log(this.props);
     return (
-      <div className="MovieApp">
-        <h1>Movie App!</h1>
+      <div>
+        <Header />
         <Search />
-        {/* Display popular movies */}
-        <h2 className="h2-popular">Popular movies</h2>
-
-        <button>Popular Movies</button>
-        <Link
-          to={{
-            pathname: `/upcoming`,
-            state: { name: this.state.movieInput }
-          }}
-        >
-          <button>Upcoming Movies</button>
-        </Link>
-        <Link
-          to={{
-            pathname: `/top-rated`,
-            state: { name: this.state.movieInput }
-          }}
-        >
-          <button>Top Rated Movies</button>
-        </Link>
-
-        <div className="Movie-container">
-          {this.state.movies.map(movie => (
-            <Movie movie={movie} key={movie.id} />
-          ))}
-          <button onClick={this.loadMore}>Load More Movies</button>
+        <div className="MovieApp">
+          <div className="Movie-container">
+            {this.state.movies.map(movie => (
+              <Movie movie={movie} key={movie.id} />
+            ))}
+            {this.state.render ? (
+              <button className="load-btn" onClick={this.loadMore}>
+                Load More Movies
+              </button>
+            ) : null}
+          </div>
         </div>
       </div>
     );

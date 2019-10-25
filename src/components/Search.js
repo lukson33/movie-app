@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import "../Search.css";
 import axios from "axios";
 
 export class Search extends Component {
@@ -49,26 +50,29 @@ export class Search extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            name="movieInput"
-            type="text"
-            value={this.state.movieInput}
-            onChange={this.handleChange}
-            onClick={this.handleDelete}
-          />
-          <Link
-            to={{
-              pathname: `/movie/${this.state.movieInput}`,
-              state: { name: this.state.movieInput }
-            }}
-          >
-            <button type="submit">Search movies</button>
-          </Link>
-          {/* <button onClick={this.handleMore}>Load More</button> */}
-        </form>
-        {this.state.isShown && <p>Please enter a movie</p>}
+      <div className="Search">
+        <div className="Search-container">
+          <form onSubmit={this.handleSubmit}>
+            <input
+              name="movieInput"
+              type="text"
+              placeholder="Search for a movie"
+              value={this.state.movieInput}
+              onChange={this.handleChange}
+              onClick={this.handleDelete}
+            />
+            <Link
+              to={{
+                pathname: `/movie/${this.state.movieInput}`,
+                state: { name: this.state.movieInput }
+              }}
+            >
+              <button type="submit">Search movies</button>
+            </Link>
+            {/* <button onClick={this.handleMore}>Load More</button> */}
+          </form>
+          {this.state.isShown && <p>Please enter a movie</p>}
+        </div>
       </div>
     );
   }

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Cast from "./Cast";
+import "../FullCast.css";
 
 export class FullCast extends Component {
   constructor(props) {
@@ -9,6 +10,8 @@ export class FullCast extends Component {
       actors: [],
       crew: []
     };
+
+    this.goBack = this.goBack.bind(this);
   }
 
   componentWillMount() {
@@ -18,22 +21,40 @@ export class FullCast extends Component {
     });
   }
 
-  render() {
-    console.log(this.state);
-    return (
-      <div>
-        <div className="col">
-          <h2>Cast ({this.state.actors.length})</h2>
-          {this.state.actors.map(a => (
-            <Cast actor={a} />
-          ))}
-        </div>
+  goBack = () => {
+    this.props.history.goBack();
+  };
 
-        <div className="col">
-          <h2>Crew ({this.state.crew.length})</h2>
-          {this.state.crew.map(a => (
-            <Cast actor={a} />
-          ))}
+  render() {
+    console.log(this.props.location);
+    return (
+      <div className="FullCast">
+        <div className="movie-banner">
+          <div className="banner-container">
+            <img
+              src={`http://image.tmdb.org/t/p/w185//${this.props.location.state.image}`}
+              alt=""
+            />
+            <h1>
+              {this.props.location.state.title} (
+              {this.props.location.state.year})
+            </h1>
+          </div>
+        </div>
+        <div className="FullCast-container">
+          <div className="col">
+            <h2>Cast ({this.state.actors.length})</h2>
+            {this.state.actors.map(a => (
+              <Cast actor={a} />
+            ))}
+          </div>
+
+          <div className="col">
+            <h2>Crew ({this.state.crew.length})</h2>
+            {this.state.crew.map(a => (
+              <Cast actor={a} />
+            ))}
+          </div>
         </div>
       </div>
     );

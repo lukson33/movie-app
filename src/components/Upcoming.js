@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Movie from "./Movie";
 import Search from "./Search";
+import Header from "./Header";
 
 export class TopRated extends Component {
   constructor(props) {
@@ -9,7 +10,8 @@ export class TopRated extends Component {
     this.state = {
       movies: [],
       newMovies: [],
-      pageNum: 1
+      pageNum: 1,
+      render: false
     };
 
     this.loadMore = this.loadMore.bind(this);
@@ -25,6 +27,14 @@ export class TopRated extends Component {
     const newMovies = movies.results;
     console.log(newMovies);
     this.setState({ movies: newMovies });
+
+    setTimeout(
+      function() {
+        //Start the timer
+        this.setState({ render: true }); //After 1 second, set render to true
+      }.bind(this),
+      500
+    );
   }
 
   async loadMore() {
@@ -53,8 +63,9 @@ export class TopRated extends Component {
   render() {
     return (
       <div className="TopRated">
+        <Header />
         <Search />
-        <button onClick={this.goBack}>GO BACK</button>
+        {/* <button onClick={this.goBack}>GO BACK</button> */}
         <div className="MovieList Movie-container">
           {this.state.movies ? (
             this.state.movies.map(m => <Movie movie={m} />)
@@ -62,7 +73,11 @@ export class TopRated extends Component {
             <p class="loading">Loading movies...</p>
           )}
 
-          <button onClick={this.loadMore}>Load More Movies</button>
+          {this.state.render ? (
+            <button className="load-btn" onClick={this.loadMore}>
+              Load More Movies
+            </button>
+          ) : null}
         </div>
       </div>
     );

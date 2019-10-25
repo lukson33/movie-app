@@ -1,0 +1,30 @@
+.Search {
+  background-color: #fff;
+  padding: 0.5rem 0;
+}
+
+.Search-container {
+  width: 40%;
+  margin: 0 auto;
+}
+
+.Search-container form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Search input {
+  border: none;
+  font-size: 1rem;
+  outline: none;
+  width: 70%;
+}
+
+.Search button {
+  border: none;
+  background-color: rgb(0, 28, 32);
+  color: #fff;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  font-size: 1rem;
+}
