@@ -13,18 +13,19 @@
 
 .Actors button {
   font-weight: bold;
-  background-color: rgb(27, 27, 94);
+  background-color: rgb(4, 45, 51);
   padding: 0.7rem;
   cursor: pointer;
   border: none;
   margin-top: 3.5rem;
-  color: rgb(209, 209, 209);
+  color: #fff;
   font-size: 1.2rem;
   transition: 0.3s all;
+  border-radius: 5px;
 }
 
 .Actors button:hover {
-  transform: translateY(-3px);
+  background-color: rgb(8, 68, 77);
 }
 
 .Movie-background {

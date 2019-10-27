@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Cast from "./Cast";
+import Header from "./Header";
 import "../FullCast.css";
 
 export class FullCast extends Component {
@@ -29,6 +30,7 @@ export class FullCast extends Component {
     console.log(this.props.location);
     return (
       <div className="FullCast">
+        <Header />
         <div className="movie-banner">
           <div className="banner-container">
             <img

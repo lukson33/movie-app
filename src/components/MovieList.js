@@ -2,6 +2,7 @@ import React, { Component, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../MovieList.css";
 import Movie from "./Movie";
+import Header from "./Header";
 import MovieDetails from "./MovieDetails";
 
 export default function MovieList(props) {
@@ -36,6 +37,7 @@ export default function MovieList(props) {
 
   return (
     <div>
+      <Header />
       <div className="MovieList Movie-container">
         {movies ? (
           movies.map(m => <Movie movie={m} />)
@@ -43,7 +45,9 @@ export default function MovieList(props) {
           <p class="loading">Loading movies...</p>
         )}
       </div>
-      <button onClick={loadMore}>Load More</button>
+      <button className="load-btn" onClick={loadMore}>
+        Load More
+      </button>
     </div>
   );
 }

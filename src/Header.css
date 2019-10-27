@@ -40,4 +40,9 @@
   border-radius: 5px;
   cursor: pointer;
   margin-bottom: 2rem;
+  transition: 0.3s all;
+}
+
+.load-btn:hover {
+  background-color: rgb(4, 56, 63);
 }

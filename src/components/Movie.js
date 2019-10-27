@@ -1,6 +1,7 @@
 import React, { Component, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../Movie.css";
+import img from "../no_cover.png";
 
 export default class Movie extends Component {
   constructor(props) {
@@ -115,7 +116,7 @@ export default class Movie extends Component {
               alt=""
             />
           ) : (
-            <p>Image not found</p>
+            <img src={img} alt="" />
           )}
         </div>
       </Link>

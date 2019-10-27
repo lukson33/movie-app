@@ -1,6 +1,7 @@
 import React, { Component, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Actor from "./Actor";
+import Header from "./Header";
 import "../Actor.css";
 import "../MovieDetails.css";
 
@@ -93,6 +94,7 @@ export default class MovieDetails extends Component {
 
     return (
       <div className="Movie-details">
+        <Header />
         <div
           className="Movie-background"
           style={{ background: this.getGradient() }}
