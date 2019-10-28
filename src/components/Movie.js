@@ -80,7 +80,7 @@ export default class Movie extends Component {
                   <p
                     style={{
                       color: this.getColor(),
-                      border: `4px solid ${this.getColor()}`
+                      border: `2px solid ${this.getColor()}`
                     }}
                     className="vote-p"
                   >
@@ -94,7 +94,7 @@ export default class Movie extends Component {
               </div>
 
               <p className="movie-desc">
-                {this.truncate(this.props.movie.overview, 20)}...
+                {this.truncate(this.props.movie.overview, 12)}...
               </p>
             </div>
             <div>
@@ -105,7 +105,9 @@ export default class Movie extends Component {
                   state: { movieInfo: this.props, actors: this.state.actors }
                 }}
               >
-                <a href="">More info</a>
+                <a class="more-info" href="">
+                  More info
+                </a>
               </Link>
             </div>
           </div>

@@ -105,6 +105,57 @@
 
 @media only screen and (max-width: 1060px) {
   .Movie {
-    width: 80%;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .Movie {
+    height: 15rem;
+  }
+
+  .Movie img {
+    width: 9rem;
+  }
+
+  .Movie-content {
+    padding: 1rem;
+  }
+
+  .movie-desc {
+    font-size: 0.7rem;
+  }
+
+  .more-info {
+    font-size: 0.6rem;
+  }
+
+  .vote-flex {
+    flex-direction: column;
+  }
+
+  .vote-flex h2 {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .vote-flex-text {
+    margin: 0;
+  }
+
+  .vote-flex-text p {
+    font-size: 0.6rem;
+  }
+
+  .vote-p {
+    padding: 0.4rem;
+  }
+
+  .vote-flex-num p {
+    font-size: 0.6rem;
+  }
+
+  .vote-p {
+    border: 2px solid;
   }
 }

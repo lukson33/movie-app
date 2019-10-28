@@ -20,7 +20,7 @@ export default class MovieDetails extends Component {
   }
   //Fix scroll error
   componentDidMount() {
-    window.scrollTo(0, 0);
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
   }
 
   toggle = () => {

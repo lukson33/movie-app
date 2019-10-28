@@ -1,3 +1,7 @@
+html {
+  overflow-x: hidden;
+}
+
 .Header {
   background-color: rgb(0, 28, 32);
   width: 100%;
