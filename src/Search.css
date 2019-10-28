@@ -34,3 +34,9 @@
 .Search button:hover {
   background-color: rgb(4, 73, 83);
 }
+
+@media only screen and (max-width: 1000px) {
+  .Search-container {
+    width: 65%;
+  }
+}

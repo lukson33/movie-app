@@ -83,3 +83,28 @@
 .Movie img {
   align-self: center;
 }
+
+@media only screen and (max-width: 1865px) {
+  .Movie {
+    width: 40rem;
+  }
+}
+
+@media only screen and (max-width: 1500px) {
+  .Movie {
+    width: 33rem;
+  }
+}
+
+@media only screen and (max-width: 1245px) {
+  .Movie {
+    width: 65rem;
+    margin-right: 0;
+  }
+}
+
+@media only screen and (max-width: 1060px) {
+  .Movie {
+    width: 100%;
+  }
+}

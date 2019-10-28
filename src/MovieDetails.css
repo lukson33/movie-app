@@ -13,7 +13,7 @@
 
 .Actors button {
   font-weight: bold;
-  background-color: rgb(4, 45, 51);
+  background-color: rgb(42, 42, 128);
   padding: 0.7rem;
   cursor: pointer;
   border: none;
@@ -25,7 +25,7 @@
 }
 
 .Actors button:hover {
-  background-color: rgb(8, 68, 77);
+  background-color: rgb(58, 58, 160);
 }
 
 .Movie-background {
@@ -65,4 +65,46 @@
 
 .Movie-wrapper img {
   min-width: 18rem;
+}
+
+@media only screen and (max-width: 1600px) {
+  .Movie-wrapper {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .Movie-wrapper img {
+    min-width: 15rem;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .Movie-text h3 {
+    font-size: 2rem;
+  }
+
+  .Movie-text {
+    margin-left: 3rem;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .Movie-wrapper {
+    flex-direction: column;
+    padding: 2rem 0;
+  }
+
+  .Movie-wrapper img {
+    margin-top: 4rem;
+    min-width: 15rem;
+  }
+
+  .Movie-text {
+    margin-left: 2rem;
+  }
+
+  .Movie-background {
+    height: 58rem;
+  }
 }
