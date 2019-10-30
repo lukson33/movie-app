@@ -50,4 +50,18 @@
   .FullCast-container {
     width: 90%;
   }
+
+  .banner-container {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 410px) {
+  .FullCast-container {
+    flex-direction: column;
+  }
+
+  .banner-container h1 {
+    font-size: 1.5rem;
+  }
 }
