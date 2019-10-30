@@ -22,6 +22,10 @@ export class FullCast extends Component {
     });
   }
 
+  componentDidMount() {
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
+  }
+
   goBack = () => {
     this.props.history.goBack();
   };
