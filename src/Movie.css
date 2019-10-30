@@ -109,7 +109,7 @@
   }
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 520px) {
   .Movie {
     height: 15rem;
   }
@@ -135,7 +135,7 @@
   }
 
   .vote-flex h2 {
-    font-size: 1rem;
+    font-size: 1.2rem;
     margin-top: 0.5rem;
   }
 
@@ -144,7 +144,7 @@
   }
 
   .vote-flex-text p {
-    font-size: 0.6rem;
+    font-size: 0.9rem;
   }
 
   .vote-p {
@@ -152,10 +152,24 @@
   }
 
   .vote-flex-num p {
-    font-size: 0.6rem;
+    font-size: 0.9rem;
   }
 
   .vote-p {
     border: 2px solid;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .vote-flex h2 {
+    font-size: 1rem;
+  }
+
+  .vote-flex-text p {
+    font-size: 0.6rem;
+  }
+
+  .vote-flex-num p {
+    font-size: 0.6rem;
   }
 }
