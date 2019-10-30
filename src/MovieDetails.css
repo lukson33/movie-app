@@ -101,10 +101,16 @@
   }
 
   .Movie-text {
-    margin-left: 2rem;
+    margin: 0;
   }
 
   .Movie-background {
     height: 58rem;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .Movie-background {
+    height: 63rem;
   }
 }
