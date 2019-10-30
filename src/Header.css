@@ -50,3 +50,23 @@ html {
 .load-btn:hover {
   background-color: rgb(4, 56, 63);
 }
+
+@media only screen and (max-width: 500px) {
+  .Header-container {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .Header h1 {
+    margin-bottom: 1rem;
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  .Header h1 {
+    font-size: 1.7rem;
+  }
+  .Header li {
+    font-size: 1rem;
+  }
+}
